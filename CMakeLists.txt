@@ -21,8 +21,12 @@ target_include_directories(${PROJECT_NAME}
 set(CMAKE_CXX_STANDARD 20)
 
 
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+
+
 # find_package(OpenCV REQUIRED)
-# find_library(PIGPIO_LIBRARY NAMES pigpio)
+find_library(PIGPIO_LIBRARY NAMES pigpio)
 
 
 # ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
@@ -30,13 +34,15 @@ set(CMAKE_CXX_STANDARD 20)
 # set(Boost_USE_MULTITHREADED ON)  
 # set(Boost_USE_STATIC_RUNTIME OFF) 
 # FIND_PACKAGE( Boost REQUIRED COMPONENTS log system program_options filesystem serialization  )
-# target_link_libraries(${PROJECT_NAME} rt)
+target_link_libraries(${PROJECT_NAME} rt)
 
 
 # INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR} )
 # INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
 
+
 # target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+
 
 # target_include_directories(${PROJECT_NAME}
 #     PRIVATE
@@ -44,10 +50,10 @@ set(CMAKE_CXX_STANDARD 20)
 # )
 
 
-# target_link_libraries(${PROJECT_NAME}
-#     ${Boost_LIBRARIES} 
-#     #${OpenCV_LIBS}
-#     Threads::Threads
-#     rt
-#     pigpio
-# )
+target_link_libraries(${PROJECT_NAME}
+    # ${Boost_LIBRARIES} 
+    # ${OpenCV_LIBS}
+    Threads::Threads
+    rt
+    pigpio
+)
