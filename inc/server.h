@@ -71,11 +71,16 @@ namespace RestServer
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-		svr_.Get("/HMI", [](const httplib::Request &req, httplib::Response &res)
+		svr_.Get("/HEY", [](const httplib::Request &req, httplib::Response &res)
 		{
 
+            nlohmann::json jsonRes;
 
+            std::string responce = "Hello, Bitch!";
 
+            jsonRes["responce"] = responce;
+
+            res.set_content(jsonRes.dump(), "application/json");
             
         });
 
