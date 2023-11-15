@@ -4,10 +4,10 @@
 
 
 
-#include "inc/httplib.h"
-#include "inc/json.hpp"
+#include "httplib.h"
+#include "json.hpp"
 
-#include "inc/server.h"
+#include "server.h"
 
 
 
